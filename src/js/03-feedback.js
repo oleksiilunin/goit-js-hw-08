@@ -1,8 +1,6 @@
 const feedbackForm = document.querySelector('.feedback-form');
 const STORAGE_KEY = "feedback-form-state";
 let dataFeedback = {};
-console.log(feedbackForm);
-
 
 feedbackForm.addEventListener('input', onInputText);
 feedbackForm.addEventListener('submit', onSubmit);
@@ -21,6 +19,7 @@ function onSubmit(evt) {
 	evt.preventDefault();
 	console.log(dataFeedback);
 	evt.currentTarget.reset();
+	localStorage.removeItem(STORAGE_KEY);
 }
 
 function fillTextarea() {
