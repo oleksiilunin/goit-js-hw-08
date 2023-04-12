@@ -22,16 +22,15 @@ function onInputText(evt) {
 
 function onSubmit(evt) {
 	evt.preventDefault();
-//TODO: Организовать условие заполнености обоих полей!
-	if (inputEmail.value & inputMessage.value) {
+
+	if (inputEmail.value && inputMessage.value) {
+		
 		evt.currentTarget.reset();
 
 		localStorage.removeItem(STORAGE_KEY);
 	
 		console.log(dataFeedback);
-	} else {
-		console.alert("TTTTTTT");
-	}
+	} 
 }
 
 function fillTextarea() {
@@ -43,5 +42,4 @@ function fillTextarea() {
 		inputEmail.value = email;
 		inputMessage.value = message;
 	}
-
 }
