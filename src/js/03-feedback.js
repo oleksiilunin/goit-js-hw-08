@@ -1,5 +1,10 @@
 const feedbackForm = document.querySelector('.feedback-form');
+
+const inputEmail = document.querySelector('[name ="email"]');
+const inputMessage = document.querySelector('[name ="message"]');
+		
 const STORAGE_KEY = "feedback-form-state";
+
 let dataFeedback = {};
 
 feedbackForm.addEventListener('input', onInputText);
@@ -17,9 +22,16 @@ function onInputText(evt) {
 
 function onSubmit(evt) {
 	evt.preventDefault();
-	console.log(dataFeedback);
-	evt.currentTarget.reset();
-	localStorage.removeItem(STORAGE_KEY);
+//TODO: Организовать условие заполнености обоих полей!
+	if (inputEmail.value & inputMessage.value) {
+		evt.currentTarget.reset();
+
+		localStorage.removeItem(STORAGE_KEY);
+	
+		console.log(dataFeedback);
+	} else {
+		console.alert("TTTTTTT");
+	}
 }
 
 function fillTextarea() {
@@ -27,9 +39,6 @@ function fillTextarea() {
 
 	if (savedData) {
 		const { email, message } = savedData;
-
-		const inputEmail = document.querySelector('[name ="email"]');
-		const inputMessage = document.querySelector('[name ="message"]');
 
 		inputEmail.value = email;
 		inputMessage.value = message;
