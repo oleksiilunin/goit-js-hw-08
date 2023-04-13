@@ -4,20 +4,26 @@ const feedbackForm = document.querySelector('.feedback-form');
 
 const inputEmail = document.querySelector('[name ="email"]');
 const inputMessage = document.querySelector('[name ="message"]');
+console.log(inputEmail);
+console.log(inputMessage);
+console.log(inputEmail.value);
+console.log(inputMessage.value);
 		
 const STORAGE_KEY = "feedback-form-state";
 
 let dataFeedback = {};
 
 feedbackForm.addEventListener('input', throttle(onInputText, 500, { leading: false, trailing: true }));
-// throttle(onInputText, 500, { leading: false, trailing: true })
 feedbackForm.addEventListener('submit', onSubmit);
 
 fillTextarea();
 
 function onInputText(evt) {
-	const targetElements = evt.currentTarget.elements;
 
+	console.log(evt.target);
+	const currentTargetElement = evt.target.closest(".feedback-form");
+	const targetElements = currentTargetElement.elements;
+	
 	dataFeedback = { email: targetElements.email.value, message: targetElements.message.value };
 
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(dataFeedback));
@@ -42,7 +48,7 @@ function fillTextarea() {
 	if (savedData) {
 		const { email, message } = savedData;
 
-		inputEmail.value = email;
+		inputEmail.value = email;		
 		inputMessage.value = message;
 	}
 }
