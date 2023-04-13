@@ -4,10 +4,6 @@ const feedbackForm = document.querySelector('.feedback-form');
 
 const inputEmail = document.querySelector('[name ="email"]');
 const inputMessage = document.querySelector('[name ="message"]');
-console.log(inputEmail);
-console.log(inputMessage);
-console.log(inputEmail.value);
-console.log(inputMessage.value);
 		
 const STORAGE_KEY = "feedback-form-state";
 
