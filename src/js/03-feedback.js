@@ -15,8 +15,6 @@ feedbackForm.addEventListener('submit', onSubmit);
 fillTextarea();
 
 function onInputText(evt) {
-
-	console.log(evt.target);
 	const currentTargetElement = evt.target.closest(".feedback-form");
 	const targetElements = currentTargetElement.elements;
 	
